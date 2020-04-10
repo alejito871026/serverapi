@@ -7,7 +7,7 @@ const app = express();
 
 
 require('./database') 
-
+const Cliente = require('./models/Clientes');
 //midelwares
 app.use(morgan('dev'));
 app.use(cors());
@@ -19,9 +19,13 @@ const history = require('connect-history-api-fallback')
 app.use(history())
 
 app.post('/api/saludo',(req, res)=>{
-    res.send(req.body.saludo)
+    Cliente.find(function(err, clientes){
+        if (err){ throw err;}
+        else{
+            res.json(clientes)
+        }
+    })
 })
-
 const host = process.env.HOST || '0.0.0.0';
 const port  = process.env.PORT || 8800
 
