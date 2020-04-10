@@ -5,7 +5,7 @@ import VueAxios from 'vue-axios';
 
 
 import App from './App.vue';
-import home from './views/home';
+import home from './views/home.vue';
 
 Vue.use(VueAxios,axios);
 Vue.use(VueRouter)
